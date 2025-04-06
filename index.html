@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groove | Online music player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="gradient">Groove Music</h1>
+        <h2>Song Uploader</h2>
+    </header>
+
+    <main>
+
+        <div class="name">
+            <input placeholder="Enter song name" id="name"/>
+            <input placeholder="Enter artist name" id="artist"/>
+            <label for="options" class="text">Choose Language: </label>
+            <select id="options" name="options">
+                <option value="hindi">Hindi</option>
+                <option value="english">English</option>
+                <option value="punjabi">Punjabi</option>
+                <option value="kumauni">Kumauni</option>
+              </select>
+              <label for="input" class="text">Choose Cover:</label>
+            <input type="file" id="cover" name="file" accept=".png, .jpg, .webp, .jpeg"/>
+
+            <label for="input" class="text">Choose Video:</label>
+            <input type="file" id="video" name="file" accept=".mp4, .m4a, .webp, .ova"/>
+
+            <label for="input" class="text">Choose Music:</label>
+            <input type="file" id="audio" name="file" accept=".mp3"/>
+
+
+            <button id="uploadBtn" style="margin-top: 40px; margin-bottom: 20px;">Upload Song</button>
+            <div id="loading" style="display:none; margin-top: 20px; color: #2582d8; font-weight: bold;">
+                Uploading... Please wait 🎵
+            </div>
+            
+
+        </div>
+        
+    </main>
+    <script src="script.js"></script>
+
+</body>
+</html>

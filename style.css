@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Lexend+Deca:wght@100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #000;
+    font-family: "Lexend Deca", sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    margin-top: 20px;
+}
+
+header h1{
+    text-align: center;
+    font-family: "Boldonse", sans-serif;
+    font-size: 3rem;
+}
+
+header h2{
+    text-align: center;
+    font-family: "Boldonse", sans-serif;
+    font-size: 1.5rem;
+    margin-top: 30px;
+}
+
+.gradient{
+    background: linear-gradient(to right, #007BFF,#1DB954 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100vw;
+    margin-top: 20px;
+}
+.name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    gap: 20px;
+}
+
+select option{
+    font-family: "Boldonse", sans-serif;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    width: 300px;
+    transition: all 0.3s ease-in-out;
+    outline: none; 
+}
+
+select{
+    font-family: "Boldonse", sans-serif;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    width: 300px;
+    transition: all 0.3s ease-in-out;
+    outline: none; 
+}
+
+.text{
+    font-size: 1rem;
+    font-family: "Boldonse", sans-serif;
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+    font-weight: 400;
+}
+
+.name input{
+   font-family: "Boldonse", sans-serif;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+    width: 300px;
+    transition: all 0.3s ease-in-out;
+    outline: none; 
+}
+
+.song{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    margin-top: 20px;
+}
+
+.song label{
+    font-size: 1rem;
+    font-family: "Boldonse", sans-serif;
+    margin-top: 20px;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    gap: 20px;
+}
+
+button{
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: "Boldonse", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+}
+/* Optional: Add this in style.css */
+#loading::after {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+    border: 2px solid #2582d8;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
