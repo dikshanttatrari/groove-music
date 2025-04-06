@@ -45,8 +45,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
       ? await uploadToCloudinary(audioFile, "all_songs")
       : "";
 
-    // Send data to backend
-    const res = await fetch("http://192.168.1.12:7000/upload-song", {
+    const res = await fetch("https://groove-music.onrender.com/upload-song", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +68,6 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
     console.error("Upload failed:", err);
     alert("❌ Error uploading song: " + err.message);
   } finally {
-    // Hide loading and reset button
     loading.style.display = "none";
     uploadBtn.disabled = false;
     uploadBtn.textContent = "Upload Song";

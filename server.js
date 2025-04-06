@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 7000;
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // to parse JSON from frontend
+app.use(express.json());
 
 // Connect to MongoDB
 mongoose
@@ -60,5 +60,9 @@ app.post("/upload-song", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on ${PORT}`);
+});
+
+app.get("/", (req, res) => {
+  res.send("Hello from Groove Music Uploader API!");
 });
