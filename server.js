@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const { nanoid } = require("nanoid");
 
 dotenv.config();
 const app = express();
@@ -19,6 +20,12 @@ mongoose
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
 const songModel = mongoose.model("Song", {
+  songId: {
+    type: String,
+    default: () => nanoid(),
+    unique: true,
+    required: true,
+  },
   name: { type: String, required: true },
   artist: { type: String, required: true },
   cover: { type: String, required: true },
@@ -43,6 +50,7 @@ app.post("/upload-song", async (req, res) => {
     }
 
     const newSong = new songModel({
+      songID,
       name,
       artist,
       cover,
