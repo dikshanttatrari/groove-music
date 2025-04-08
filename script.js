@@ -61,9 +61,17 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
     });
 
     const result = await res.json();
-    console.log(result);
-
+    if (res.status === 409) {
+      alert("⚠️ This song already exists!");
+      return;
+    }
     alert("🎉 Song uploaded successfully!");
+    document.getElementById("name").value = "";
+    document.getElementById("artist").value = "";
+    document.getElementById("options").selectedIndex = 0;
+    document.getElementById("cover").value = "";
+    document.getElementById("video").value = "";
+    document.getElementById("audio").value = "";
   } catch (err) {
     console.error("Upload failed:", err);
     alert("❌ Error uploading song: " + err.message);

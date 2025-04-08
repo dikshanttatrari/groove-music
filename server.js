@@ -7,11 +7,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 7000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_DB_URL, {
     useNewUrlParser: true,
@@ -20,7 +18,6 @@ mongoose
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
-// Song model
 const songModel = mongoose.model("Song", {
   name: { type: String, required: true },
   artist: { type: String, required: true },
@@ -38,6 +35,11 @@ app.post("/upload-song", async (req, res) => {
 
     if (!name || !artist || !cover || !audio || !language) {
       return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    const existingSong = await songModel.findOne({ name });
+    if (existingSong) {
+      return res.status(409).json({ error: "Song already exists" });
     }
 
     const newSong = new songModel({
