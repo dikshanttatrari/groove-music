@@ -2,7 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const { nanoid } = require("nanoid");
+let nanoid;
+import("nanoid").then((mod) => {
+  nanoid = mod.nanoid;
+});
 
 dotenv.config();
 const app = express();
@@ -19,10 +22,15 @@ mongoose
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
+const songID = () => {
+  const id = nanoid(10);
+  return id;
+};
+
 const songModel = mongoose.model("Song", {
   songId: {
     type: String,
-    default: () => nanoid(),
+    default: () => songID(),
     unique: true,
     required: true,
   },

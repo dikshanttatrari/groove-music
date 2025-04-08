@@ -29,12 +29,10 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
   };
 
   try {
-    // Show loading and disable button
     loading.style.display = "block";
     uploadBtn.disabled = true;
     uploadBtn.textContent = "Uploading...";
 
-    // Upload files one by one
     const coverUrl = coverFile
       ? await uploadToCloudinary(coverFile, "cover_images")
       : "";
