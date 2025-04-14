@@ -5,6 +5,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
   const name = document.getElementById("name").value;
   const artist = document.getElementById("artist").value;
   const language = document.getElementById("options").value;
+  const genre = document.getElementById("genre").value;
 
   const coverFile = document.getElementById("cover").files[0];
   const videoFile = document.getElementById("video").files[0];
@@ -52,6 +53,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
         name,
         artist,
         language,
+        genre,
         cover: coverUrl,
         video: videoUrl,
         audio: audioUrl,
@@ -67,6 +69,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
     document.getElementById("name").value = "";
     document.getElementById("artist").value = "";
     document.getElementById("options").selectedIndex = 0;
+    document.getElementById("genre").selectedIndex = 0;
     document.getElementById("cover").value = "";
     document.getElementById("video").value = "";
     document.getElementById("audio").value = "";

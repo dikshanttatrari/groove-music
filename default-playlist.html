@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groove Music Playlist Uploader</title>
+    <link rel="shortcut icon" href="fav.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="gradient">Groove Music</h1>
+      <h2>Playlist Uploader</h2>
+    </header>
+    <main>
+      <div class="name">
+        <input placeholder="Enter playlist name" id="playlistName" />
+        <input placeholder="Enter description" id="playlistDescription" />
+
+        <label for="input" class="text">Choose Cover:</label>
+        <input
+          type="file"
+          id="playlistCover"
+          name="file"
+          accept=".png, .jpg, .webp, .jpeg"
+        />
+        <button id="fetchSongsBtn" style="margin-top: 20px">Fetch Songs</button>
+        <label for="songs" class="text">Select Songs:</label>
+        <select id="songs" name="songs" multiple size="8"></select>
+        <p id="selectedCount" class="text">0 song(s) selected 🎧</p>
+
+        <button
+          id="uploadPlaylistBtn"
+          style="margin-top: 40px; margin-bottom: 20px"
+        >
+          Upload Playlist
+        </button>
+        <div
+          id="loading"
+          style="
+            display: none;
+            margin-top: 20px;
+            color: #2582d8;
+            font-weight: bold;
+          "
+        >
+          Uploading... Please wait 🎵
+        </div>
+      </div>
+    </main>
+    <script src="playlist-script.js"></script>
+  </body>
+</html>

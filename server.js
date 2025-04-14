@@ -27,6 +27,11 @@ const songID = () => {
   return id;
 };
 
+const playlistID = () => {
+  const id = nanoid(7);
+  return id;
+};
+
 const songModel = mongoose.model("Song", {
   songId: {
     type: String,
@@ -42,6 +47,67 @@ const songModel = mongoose.model("Song", {
   language: { type: String, required: true },
   likes: { type: Number, default: 0 },
   timeStamp: { type: Date, default: () => Date.now() },
+});
+
+const playlistModel = mongoose.model("DefaultPlaylists", {
+  playlistId: {
+    type: String,
+    default: () => playlistID(),
+    unique: true,
+    required: true,
+  },
+  name: { type: String, required: true },
+  songs: [],
+  cover: { type: String },
+  timeStamp: { type: Date, default: () => Date.now() },
+});
+
+app.get("/songs", async (req, res) => {
+  try {
+    const songs = await songModel.find({}).sort({ timeStamp: -1 });
+    res.json(songs);
+  } catch (err) {
+    console.error("Error fetching songs:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.post("/upload-playlist", async (req, res) => {
+  try {
+    const { name, description, songs, cover } = req.body;
+
+    if (!name || !songs || songs.length === 0) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    let playlistCover = cover;
+    if (!cover) {
+      const lastSongId = songs[songs.length - 1];
+      const lastSong = await songModel.findById(lastSongId);
+      if (!lastSong) {
+        return res
+          .status(404)
+          .json({ error: "Last song not found in the database" });
+      }
+      playlistCover = lastSong.cover;
+    }
+
+    const newPlaylist = new playlistModel({
+      name,
+      songs,
+      description,
+      cover: playlistCover,
+    });
+
+    await newPlaylist.save();
+    res.status(201).json({
+      message: "Playlist uploaded successfully",
+      playlist: newPlaylist,
+    });
+  } catch (err) {
+    console.error("Error saving playlist:", err);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 app.post("/upload-song", async (req, res) => {

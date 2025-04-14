@@ -1,57 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Groove | Online music player</title>
-    <link rel="shortcut icon" href="fav.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="shortcut icon" href="fav.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1 class="gradient">Groove Music</h1>
-        <h2>Song Uploader</h2>
+      <h1 class="gradient">Groove Music</h1>
+      <h2>Song Uploader</h2>
     </header>
 
     <main>
+      <div class="name">
+        <input placeholder="Enter song name" id="name" />
+        <input placeholder="Enter artist name" id="artist" />
+        <label for="options" class="text">Choose Language: </label>
+        <select id="options" name="options">
+          <option value="hindi">Hindi</option>
+          <option value="english">English</option>
+          <option value="punjabi">Punjabi</option>
+          <option value="kumauni">Kumauni</option>
+          <option value="haryanvi">Haryanvi</option>
+          <option value="bhojpuri">Bhojpuri</option>
+          <option value="telugu">Telugu</option>
+          <option value="tamil">Tamil</option>
+          <option value="malayalam">Malayalam</option>
+          <option value="nepali">Nepali</option>
+        </select>
+        <label for="genre" class="text">Choose Genre:</label>
+        <select id="genre" name="genre">
+          <option value="Indian Pop">Indian Pop</option>
+          <option value="Kumaoni Folk">Kumaoni Folk</option>
+          <option value="Bollywood Classical">Bollywood Classical</option>
+          <option value="Indie Pop">Indie Pop / Singer-Songwriter</option>
+          <option value="Indie Rock">Indie Rock</option>
+          <option value="Hip-Hop">Hip-Hop / Rap</option>
+          <option value="Bollywood Romantic">Bollywood Romantic</option>
+          <option value="Telugu Film">Telugu Film Music</option>
+          <option value="Bollywood Retro">Bollywood Retro</option>
+          <option value="Bollywood Party">Bollywood Party</option>
+          <option value="Nepali Folk">Nepali Folk</option>
+          <option value="Indian Folk">Indian Folk / Sufi</option>
+          <option value="Bollywood Item">Bollywood Item Song</option>
+          <option value="Bollywood Dance">Bollywood Dance</option>
+          <option value="Bollywood Qawwali">Bollywood Qawwali Fusion</option>
+          <option value="Devotional">Devotional / Spiritual</option>
+          <option value="Bollywood Lullaby">Bollywood Lullaby</option>
+          <option value="Bollywood Sufi">Bollywood Sufi Fusion</option>
+          <option value="Nepali Pop">Nepali Pop</option>
+          <option value="Devotional Lullaby">Devotional / Lullaby</option>
+          <option value="Pop">Pop</option>
+          <option value="Rock">Rock</option>
+          <option value="Electronic">Electronic</option>
+          <option value="Classical">Classical</option>
+          <option value="Jazz">Jazz</option>
+          <option value="Blues">Blues</option>
+          <option value="Country">Country</option>
+          <option value="Metal">Metal</option>
+          <option value="Reggae">Reggae</option>
+          <option value="Punk">Punk</option>
+          <option value="Dancehall">Dancehall</option>
+          <option value="House">House</option>
+          <option value="Techno">Techno</option>
+          <option value="Trance">Trance</option>
+          <option value="Alternative">Alternative</option>
+          <option value="Indie">Indie</option>
+          <option value="RnB">R&B</option>
+          <option value="Soul">Soul</option>
+          <option value="Folk">Folk</option>
+          <option value="World">World</option>
+          <option value="Reggaeton">Reggaeton</option>
+          <option value="Latin">Latin</option>
+          <option value="Afrobeat">Afrobeat</option>
+          <option value="Kpop">K-Pop</option>
+          <option value="Anime">Anime</option>
+          <option value="Chill">Chill</option>
+          <option value="Lo-fi">Lo-Fi</option>
+          <option value="Ambient">Ambient</option>
+          <option value="Indian Classical">Indian Classical</option>
+        </select>
 
-        <div class="name">
-            <input placeholder="Enter song name" id="name"/>
-            <input placeholder="Enter artist name" id="artist"/>
-            <label for="options" class="text">Choose Language: </label>
-            <select id="options" name="options">
-                <option value="hindi">Hindi</option>
-                <option value="english">English</option>
-                <option value="punjabi">Punjabi</option>
-                <option value="kumauni">Kumauni</option>
-                <option value="haryanvi">Haryanvi</option>
-                <option value="bhojpuri">Bhojpuri</option>
-                <option value="telugu">Telugu</option>
-                <option value="tamil">Tamil</option>
-                <option value="malayalam">Malayalam</option>
-                <option value="nepali">Nepali</option>
-              </select>
-              <label for="input" class="text">Choose Cover:</label>
-            <input type="file" id="cover" name="file" accept=".png, .jpg, .webp, .jpeg"/>
+        <label for="input" class="text">Choose Cover:</label>
+        <input
+          type="file"
+          id="cover"
+          name="file"
+          accept=".png, .jpg, .webp, .jpeg"
+        />
 
-            <label for="input" class="text">Choose Video:</label>
-            <input type="file" id="video" name="file" accept=".mp4, .m4a, .webp, .ova"/>
+        <label for="input" class="text">Choose Video:</label>
+        <input
+          type="file"
+          id="video"
+          name="file"
+          accept=".mp4, .m4a, .webp, .ova"
+        />
 
-            <label for="input" class="text">Choose Music:</label>
-            <input type="file" id="audio" name="file" accept=".mp3"/>
+        <label for="input" class="text">Choose Music:</label>
+        <input type="file" id="audio" name="file" accept=".mp3" />
 
+        <button id="uploadBtn" style="margin-top: 40px; margin-bottom: 20px">
+          Upload Song
+        </button>
+        <button onclick="window.location.href='/default-playlist.html'">
+          Playlist Uploader
+        </button>
 
-            <button id="uploadBtn" style="margin-top: 40px; margin-bottom: 20px;">Upload Song</button>
-            <div id="loading" style="display:none; margin-top: 20px; color: #2582d8; font-weight: bold;">
-                Uploading... Please wait 🎵
-            </div>
-            
-
+        <div
+          id="loading"
+          style="
+            display: none;
+            margin-top: 20px;
+            color: #2582d8;
+            font-weight: bold;
+          "
+        >
+          Uploading... Please wait 🎵
         </div>
-        
+      </div>
     </main>
     <script src="script.js"></script>
-
-</body>
+  </body>
 </html>

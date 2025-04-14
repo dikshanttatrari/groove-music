@@ -137,6 +137,21 @@ button{
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
 }
+
+#loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #2582d8;
+    font-weight: bold;
+    font-size: 24px;
+    z-index: 999;
+    padding: 80px;
+    background-color: #3a3d3d;
+    border-radius: 30px;
+  }
 /* Optional: Add this in style.css */
 #loading::after {
     content: '';
@@ -149,6 +164,7 @@ button{
     border-radius: 50%;
     animation: spin 0.7s linear infinite;
   }
+  
   
   @keyframes spin {
     to {
