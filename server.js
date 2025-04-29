@@ -46,6 +46,7 @@ const songModel = mongoose.model("Song", {
   video: { type: String },
   language: { type: String, required: true },
   likes: { type: Number, default: 0 },
+  genre: {type: String},
   timeStamp: { type: Date, default: () => Date.now() },
 });
 
