@@ -46,6 +46,7 @@ const songModel = mongoose.model("Song", {
   video: { type: String },
   language: { type: String, required: true },
   likes: { type: Number, default: 0 },
+  genre: {type: String},
   timeStamp: { type: Date, default: () => Date.now() },
 });
 
@@ -112,7 +113,7 @@ app.post("/upload-playlist", async (req, res) => {
 
 app.post("/upload-song", async (req, res) => {
   try {
-    const { name, artist, cover, audio, video, language } = req.body;
+    const { name, artist, cover, audio, video, language, genre } = req.body;
 
     if (!name || !artist || !cover || !audio || !language) {
       return res.status(400).json({ error: "Missing required fields" });
@@ -131,6 +132,7 @@ app.post("/upload-song", async (req, res) => {
       audio,
       video,
       language,
+      genre
     });
 
     await newSong.save();
