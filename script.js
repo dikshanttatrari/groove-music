@@ -44,21 +44,24 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
       ? await uploadToCloudinary(audioFile, "all_songs")
       : "";
 
-    const res = await fetch("https://groove-music.onrender.com/upload-song", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        artist,
-        language,
-        genre,
-        cover: coverUrl,
-        video: videoUrl,
-        audio: audioUrl,
-      }),
-    });
+    const res = await fetch(
+      "https://groove-music-hui4.onrender.com/upload-song",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          artist,
+          language,
+          genre,
+          cover: coverUrl,
+          video: videoUrl,
+          audio: audioUrl,
+        }),
+      }
+    );
 
     const result = await res.json();
     if (res.status === 409) {

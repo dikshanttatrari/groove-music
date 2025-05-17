@@ -2,7 +2,9 @@ let selectedSongIDs = [];
 
 async function fetchSongs() {
   try {
-    const response = await fetch("https://groove-music.onrender.com/songs");
+    const response = await fetch(
+      "https://groove-music-hui4.onrender.com/songs"
+    );
     const songs = await response.json();
 
     const songsSelect = document.getElementById("songs");
@@ -95,7 +97,7 @@ uploadPlaylistBtn.addEventListener("click", async () => {
   } else {
     const firstSelectedSongId = selectedSongIDs[0];
     const firstSelectedSong = await fetch(
-      `https://groove-music.onrender.com/songs/${firstSelectedSongId}`
+      `https://groove-music-hui4.onrender.com/songs/${firstSelectedSongId}`
     ).then((res) => res.json());
     coverUrl = firstSelectedSong.cover;
   }
@@ -104,7 +106,7 @@ uploadPlaylistBtn.addEventListener("click", async () => {
 
   try {
     const response = await fetch(
-      "https://groove-music.onrender.com/upload-playlist",
+      "https://groove-music-hui4.onrender.com/upload-playlist",
       {
         method: "POST",
         headers: {
