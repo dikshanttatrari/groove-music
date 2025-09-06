@@ -93,6 +93,7 @@ document.getElementById("uploadBtn")?.addEventListener("click", async () => {
 const API_URL = "https://groove-music-hui4.onrender.com/all-songs";
 const songContainer = document.getElementById("songs");
 const searchInput = document.getElementById("searchInput");
+const totalSongsContainer = document.getElementById("total-songs-container");
 
 // Fetch all songs or filtered by query
 async function fetchSongs(query = "") {
@@ -108,6 +109,7 @@ async function fetchSongs(query = "") {
     }
 
     songs.forEach((song) => {
+      totalSongsContainer.innerHTML = `<h2>{songs.length} Songs</h2>`
       const card = document.createElement("div");
       card.classList.add("song-card");
 
