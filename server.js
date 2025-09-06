@@ -46,7 +46,7 @@ const songModel = mongoose.model("Song", {
   video: { type: String },
   language: { type: String, required: true },
   likes: { type: Number, default: 0 },
-  genre: {type: String},
+  genre: { type: String },
   timeStamp: { type: Date, default: () => Date.now() },
 });
 
@@ -132,7 +132,7 @@ app.post("/upload-song", async (req, res) => {
       audio,
       video,
       language,
-      genre
+      genre,
     });
 
     await newSong.save();
@@ -151,4 +151,25 @@ app.listen(PORT, () => {
 
 app.get("/", (req, res) => {
   res.send("Hello from Groove Music Uploader API!");
+});
+
+app.get("/all-songs", async (req, res) => {
+  try {
+    const { search } = req.query;
+    let query = {};
+    if (search) {
+      query = {
+        $or: [
+          { name: { $regex: search, $options: "i" } },
+          { artist: { $regex: search, $options: "i" } },
+        ],
+      };
+    }
+
+    const songs = await songModel.find(query).sort({ timeStamp: -1 });
+    res.json(songs);
+  } catch (err) {
+    console.error("Error fetching songs:", err);
+    res.status(500).json({ error: "Server error" });
+  }
 });

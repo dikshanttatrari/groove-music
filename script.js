@@ -1,4 +1,5 @@
-document.getElementById("uploadBtn").addEventListener("click", async () => {
+// ----------------- UPLOAD SONG -----------------
+document.getElementById("uploadBtn")?.addEventListener("click", async () => {
   const uploadBtn = document.getElementById("uploadBtn");
   const loading = document.getElementById("loading");
 
@@ -26,7 +27,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
 
     const data = await res.json();
     if (data.secure_url) return data.secure_url;
-    else throw new Error(data.error.message || "Upload failed");
+    else throw new Error(data.error?.message || "Upload failed");
   };
 
   try {
@@ -69,6 +70,8 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
       return;
     }
     alert("🎉 Song uploaded successfully!");
+
+    // reset form
     document.getElementById("name").value = "";
     document.getElementById("artist").value = "";
     document.getElementById("options").selectedIndex = 0;
@@ -85,3 +88,53 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
     uploadBtn.textContent = "Upload Song";
   }
 });
+
+// ----------------- FETCH + SEARCH SONGS -----------------
+const API_URL = "https://groove-music-hui4.onrender.com/all-songs";
+const songContainer = document.getElementById("songs");
+const searchInput = document.getElementById("searchInput");
+
+// Fetch all songs or filtered by query
+async function fetchSongs(query = "") {
+  try {
+    const res = await fetch(`${API_URL}?search=${encodeURIComponent(query)}`);
+    const songs = await res.json();
+
+    songContainer.innerHTML = "";
+
+    if (songs.length === 0) {
+      songContainer.innerHTML = `<p class="no-results">No songs found 🎵</p>`;
+      return;
+    }
+
+    songs.forEach((song) => {
+      const card = document.createElement("div");
+      card.classList.add("song-card");
+
+      card.innerHTML = `
+        <img src="${song.cover}" alt="${song.name}" />
+        <div class="song-info">
+          <p class="song-title">${song.name}</p>
+          <p class="song-artist">${song.artist}</p>
+        </div>
+      `;
+      songContainer.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Error fetching songs:", err);
+  }
+}
+
+// Debounce search for smoother performance
+let debounceTimeout;
+searchInput?.addEventListener("input", (e) => {
+  clearTimeout(debounceTimeout);
+  debounceTimeout = setTimeout(() => {
+    fetchSongs(e.target.value.trim());
+  }, 300);
+});
+
+// Initial fetch
+if (songContainer) {
+  window.onload = () => fetchSongs();
+}

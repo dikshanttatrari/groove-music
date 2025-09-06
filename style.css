@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Lexend+Deca:wght@100..900&display=swap');
-*{
+
+@font-face {
+    font-family: 'Hangout';
+    src: url('./Hangout.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,7 +19,7 @@
     overflow-x: hidden;
 }
 
-header{
+header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,26 +28,26 @@ header{
     margin-top: 20px;
 }
 
-header h1{
+header h1 {
     text-align: center;
     font-family: "Boldonse", sans-serif;
     font-size: 3rem;
 }
 
-header h2{
+header h2 {
     text-align: center;
     font-family: "Boldonse", sans-serif;
     font-size: 1.5rem;
     margin-top: 30px;
 }
 
-.gradient{
-    background: linear-gradient(to right, #007BFF,#1DB954 );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.gradient {
+    background: linear-gradient(to right, #007BFF, #1DB954);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-main{
+main {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,7 +55,8 @@ main{
     width: 100vw;
     margin-top: 20px;
 }
-.name{
+
+.name {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +65,7 @@ main{
     gap: 20px;
 }
 
-select option{
+select option {
     font-family: "Boldonse", sans-serif;
     font-size: 1rem;
     padding: 10px 20px;
@@ -64,10 +75,10 @@ select option{
     color: #000;
     width: 300px;
     transition: all 0.3s ease-in-out;
-    outline: none; 
+    outline: none;
 }
 
-select{
+select {
     font-family: "Boldonse", sans-serif;
     font-size: 1rem;
     padding: 10px 20px;
@@ -77,10 +88,10 @@ select{
     color: #000;
     width: 300px;
     transition: all 0.3s ease-in-out;
-    outline: none; 
+    outline: none;
 }
 
-.text{
+.text {
     font-size: 1rem;
     font-family: "Boldonse", sans-serif;
     margin-top: 20px;
@@ -89,8 +100,8 @@ select{
     font-weight: 400;
 }
 
-.name input{
-   font-family: "Boldonse", sans-serif;
+.name input {
+    font-family: "Boldonse", sans-serif;
     font-size: 1rem;
     padding: 10px 20px;
     border: none;
@@ -99,10 +110,10 @@ select{
     color: #000;
     width: 300px;
     transition: all 0.3s ease-in-out;
-    outline: none; 
+    outline: none;
 }
 
-.song{
+.song {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,13 +122,13 @@ select{
     margin-top: 20px;
 }
 
-.song label{
+.song label {
     font-size: 1rem;
     font-family: "Boldonse", sans-serif;
     margin-top: 20px;
 }
 
-form{
+form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,7 +137,7 @@ form{
     gap: 20px;
 }
 
-button{
+button {
     background-color: #fff;
     color: #000;
     border: none;
@@ -151,7 +162,8 @@ button{
     padding: 80px;
     background-color: #3a3d3d;
     border-radius: 30px;
-  }
+}
+
 /* Optional: Add this in style.css */
 #loading::after {
     content: '';
@@ -163,12 +175,11 @@ button{
     border-top: 2px solid transparent;
     border-radius: 50%;
     animation: spin 0.7s linear infinite;
-  }
-  
-  
-  @keyframes spin {
+}
+
+
+@keyframes spin {
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
+}
